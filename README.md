@@ -1,46 +1,46 @@
-Currency Converter 💱
+# Currency Converter 💱
+
 Un conversor de monedas en Java que utiliza la API de ExchangeRate-API para obtener tasas de cambio en tiempo real. El proyecto permite convertir entre diferentes monedas (ARS, USD, EUR, COP) con una interfaz de usuario por consola.
-🚀 Características
 
-Conversión en tiempo real usando ExchangeRate-API
-Soporte para múltiples monedas:
+## 🚀 Características
 
-Peso Argentino (ARS)
-Dólar Estadounidense (USD)
-Euro (EUR)
-Peso Colombiano (COP)
+- Conversión en tiempo real usando ExchangeRate-API
+- Soporte para múltiples monedas:
+  - Peso Argentino (ARS)
+  - Dólar Estadounidense (USD)
+  - Euro (EUR)
+  - Peso Colombiano (COP)
+- Interfaz de usuario por consola intuitiva
+- Utilización de Java Records para el manejo de datos
+- Implementación de cliente HTTP moderno
+- Manejo de errores robusto
 
+## 📋 Prerrequisitos
 
-Interfaz de usuario por consola intuitiva
-Utilización de Java Records para el manejo de datos
-Implementación de cliente HTTP moderno
-Manejo de errores robusto
+- Java 17 o superior
+- Maven
+- Una API key de [ExchangeRate-API](https://www.exchangerate-api.com/)
 
-📋 Prerrequisitos
+## 🔧 Instalación
 
-Java 17 o superior
-Maven
-Una API key de ExchangeRate-API
-
-🔧 Instalación
-
-Clona el repositorio:
-
-bashCopygit clone https://github.com/tuusuario/currency-converter.git
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tuusuario/currency-converter.git
 cd currency-converter
+```
 
-Instala las dependencias con Maven:
+2. Instala las dependencias con Maven:
+```bash
+mvn install
+```
 
-bashCopymvn install
+3. Configura tu API key:
+   - Reemplaza `TU_API_KEY` en la clase `Main` con tu API key de ExchangeRate-API
 
-Configura tu API key:
+## 📦 Estructura del Proyecto
 
-Reemplaza TU_API_KEY en la clase Main con tu API key de ExchangeRate-API
-
-
-
-📦 Estructura del Proyecto
-Copysrc/
+```
+src/
 ├── main/
 │   └── java/
 │       └── alura/
@@ -51,45 +51,51 @@ Copysrc/
 │               │   └── CurrencyConversion.java
 │               └── ui/
 │                   └── CurrencyConverterUI.java
-🛠️ Tecnologías Utilizadas
+```
 
-Java 17
-Maven
-Gson
-ExchangeRate-API
-Java HTTP Client
+## 🛠️ Tecnologías Utilizadas
 
-📄 Dependencias Maven
-xmlCopy<dependencies>
+- Java 17
+- Maven
+- Gson
+- ExchangeRate-API
+- Java HTTP Client
+
+## 📄 Dependencias Maven
+
+```xml
+<dependencies>
     <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
         <version>2.10.1</version>
     </dependency>
 </dependencies>
-💻 Uso
+```
 
-Ejecuta la aplicación:
+## 💻 Uso
 
-javaCopypublic class Main {
+1. Ejecuta la aplicación:
+```java
+public class Main {
     public static void main(String[] args) {
         String apiKey = "TU_API_KEY";
         CurrencyConverterUI converter = new CurrencyConverterUI(apiKey);
         converter.start();
     }
 }
+```
 
-Sigue las instrucciones en pantalla:
+2. Sigue las instrucciones en pantalla:
+   - Selecciona la moneda de origen
+   - Ingresa el monto a convertir
+   - Visualiza las conversiones a todas las monedas disponibles
+   - Decide si deseas realizar otra conversión
 
-Selecciona la moneda de origen
-Ingresa el monto a convertir
-Visualiza las conversiones a todas las monedas disponibles
-Decide si deseas realizar otra conversión
+## 📝 Ejemplo de Uso
 
-
-
-📝 Ejemplo de Uso
-Copy=== Conversor de Monedas ===
+```
+=== Conversor de Monedas ===
 Seleccione la moneda de origen:
 1. Peso Argentino (ARS)
 2. Dólar Estadounidense (USD)
@@ -108,49 +114,56 @@ EUR: 91.23 (Tasa: 0.9123)
 COP: 394650.00 (Tasa: 3946.5000)
 
 ¿Desea realizar otra conversión? (s/n)
-⚡ Características Principales del Código
+```
 
-Records para DTO:
+## ⚡ Características Principales del Código
 
-javaCopypublic record CurrencyConversion(
+1. **Records para DTO:**
+```java
+public record CurrencyConversion(
     String fromCurrency,
     String toCurrency,
     double amount,
     double convertedAmount,
     double rate
 ) {}
+```
 
-Cliente HTTP Moderno:
-
-javaCopyHttpClient httpClient = HttpClient.newHttpClient();
+2. **Cliente HTTP Moderno:**
+```java
+HttpClient httpClient = HttpClient.newHttpClient();
 HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create(endpoint))
         .header("Accept", "application/json")
         .GET()
         .build();
-🤝 Contribuir
+```
 
-Fork el proyecto
-Crea tu Feature Branch (git checkout -b feature/AmazingFeature)
-Commit tus cambios (git commit -m 'Add some AmazingFeature')
-Push al Branch (git push origin feature/AmazingFeature)
-Abre un Pull Request
+## 🤝 Contribuir
 
-✨ Mejoras Futuras Planificadas
+1. Fork el proyecto
+2. Crea tu Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push al Branch (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
- Agregar más monedas
- Implementar caché de tasas de cambio
- Agregar historiales de conversión
- Crear una interfaz gráfica
- Exportar resultados a CSV
+## ✨ Mejoras Futuras Planificadas
 
-📄 Licencia
-Este proyecto está bajo la Licencia MIT - mira el archivo LICENSE.md para detalles
+- [ ] Agregar más monedas
+- [ ] Implementar caché de tasas de cambio
+- [ ] Agregar historiales de conversión
+- [ ] Crear una interfaz gráfica
+- [ ] Exportar resultados a CSV
 
-✍️ Autor
-spawn22
+## 📄 Licencia
 
-🎁 Agradecimientos
+Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
-ExchangeRate-API por proporcionar las tasas de cambio
-Alura por el desafío
+## ✍️ Autor
+
+Lucas Ruiz - [tuusuario](https://github.com/spawn22)
+
+## 🎁 Agradecimientos
+
+* ExchangeRate-API por proporcionar las tasas de cambio
+* Alura por el desafío
